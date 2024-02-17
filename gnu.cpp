@@ -89,41 +89,46 @@ void generateFruit(){
     fruitX = rand() % width;//ส่วนค่าพวกนี้คือการเซ็ตให้ตำแหน่งของผลไม้randomเกิดตามแกน x y
     fruitY = rand() % height;
     }
-    else if (gf <= 30 && fruit1 == "fruit") gf = rand()%100+1;
+    else if (gf <= 30 && fruit1 == "fruit")
+    generateFruit();
+    
 
     if(gf <= 50 && gf >30 && fruit1 != "boost"){
     boostFruitX = rand() % width;
     boostFruitY = rand() % height;
     }
-    else if (gf <= 50 && gf >30 && fruit1 == "boost") gf = rand()%100+1;
-
+    else if (gf <= 50 && gf >30 && fruit1 == "boost")
+    generateFruit();
+    
 
     if(gf <=65 && gf > 50 && fruit1 != "poison"){
     poisonFruitX = rand() % width;
     poisonFruitY = rand() % height;
     }
-    else if (gf <=65 && gf > 50 && fruit1 == "poison") gf = rand()%100+1;
+    else if (gf <=65 && gf > 50 && fruit1 == "poison")
+    generateFruit();
+    
 
     if (gf <=80 && gf > 65 && fruit1 != "fat")
     {
     fatFruitX = rand() % width;
     fatFruitY = rand() % height;
     }
-    else if (gf <=80 && gf > 65 && fruit1 == "fat") gf = rand()%100+1;
+    else if (gf <=80 && gf > 65 && fruit1 == "fat") generateFruit();
 
     if (gf <= 90 && gf > 80 && fruit1 != "reverse")
     {
     reverseFruitX = rand() % width;
     reverseFruitY = rand() % height;
     }
-    else if (gf <= 90 && gf > 80 && fruit1 == "reverse") gf = rand()%100+1;
+    else if (gf <= 90 && gf > 80 && fruit1 == "reverse") generateFruit();
 
     if (gf <= 100 && gf > 90 && fruit1 != "Minus")
     {
     MinusFruitX = rand() % width;
     MinusFruitY = rand() % height;
     }
-    else if(gf <= 100 && gf > 90 && fruit1 == "Minus") gf = rand()%100+1;
+    else if(gf <= 100 && gf > 90 && fruit1 == "Minus") generateFruit();
 
     fruitEat = false ;
     }

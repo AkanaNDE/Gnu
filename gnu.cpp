@@ -1,5 +1,4 @@
 //โค้ดอันนี้อ่ะจะเล่นใน Terminal เลย เราไม่รู้นะว่าถ้าจะเอาไปใช้กับ unreal หรือ unity หรืออะไรได้มั้ย ยังไงก็เอาไว้เป็นตัวอย่างก่อนกะได้5555
-
 #include <iostream> 
 #include <conio.h>
 #include <windows.h>
@@ -131,11 +130,7 @@ void generateFruit(){
     else if(gf <= 100 && gf > 90 && fruit1 == "Minus") generateFruit();
 
     fruitEat = false ;
-    }
-    
-    
-
-
+    }  
 }
 
 void Draw() {  // อันนี้เป็นฟังก์ชั่นที่จะวาดmapของเกมขึ้นมา

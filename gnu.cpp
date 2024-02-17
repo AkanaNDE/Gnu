@@ -20,6 +20,7 @@ int boostDuration ; //อันนี้คือตัวแปรที่จ�
 int reverseDuration ; //อันนี้กะสถานะรีเวิร์สกี่เฟรม
 bool fruitEat;
 bool restart = false;
+string fruit1;
 
 void Setup() { //ฟังก์ชั่นนี้มีไว้เซ็ตค่าของตัวแปรต่างๆว่าตอนเริ่มจะให้ค่าอะไรเป็นยังไง
     gameOver = false; //อันนี้กะให้เป็นfalseไว้เกมจะได้ยังไม่จบ
@@ -76,11 +77,8 @@ Sleep(100);
 }
 
 void generateFruit(){
-    int gf;
-    string fruit1;
-    
     if(fruitEat){
-    gf = rand()%100+1;
+    int gf = rand()%100+1;
     if(gf <= 30){
     fruitX = rand() % width;//ส่วนค่าพวกนี้คือการเซ็ตให้ตำแหน่งของผลไม้randomเกิดตามแกน x y
     fruitY = rand() % height;
@@ -115,15 +113,17 @@ void generateFruit(){
     fruit1 = "Minus";
     }
     }
+}
 
+void generateFruit2(){
     if(fruitEat){
-    gf = rand()%100+1;
+    int gf = rand()%100+1;
     if(gf <= 30 && fruit1 != "fruit"){
     fruitX = rand() % width;//ส่วนค่าพวกนี้คือการเซ็ตให้ตำแหน่งของผลไม้randomเกิดตามแกน x y
     fruitY = rand() % height;
     }
     else if (gf <= 30 && fruit1 == "fruit")
-    generateFruit();
+    generateFruit2();
     
 
     if(gf <= 50 && gf >30 && fruit1 != "boost"){
@@ -131,7 +131,7 @@ void generateFruit(){
     boostFruitY = rand() % height;
     }
     else if (gf <= 50 && gf >30 && fruit1 == "boost")
-    generateFruit();
+    generateFruit2();
     
 
     if(gf <=65 && gf > 50 && fruit1 != "poison"){
@@ -139,7 +139,7 @@ void generateFruit(){
     poisonFruitY = rand() % height;
     }
     else if (gf <=65 && gf > 50 && fruit1 == "poison")
-    generateFruit();
+    generateFruit2();
     
 
     if (gf <=80 && gf > 65 && fruit1 != "fat")
@@ -147,24 +147,25 @@ void generateFruit(){
     fatFruitX = rand() % width;
     fatFruitY = rand() % height;
     }
-    else if (gf <=80 && gf > 65 && fruit1 == "fat") generateFruit();
+    else if (gf <=80 && gf > 65 && fruit1 == "fat") generateFruit2();
 
     if (gf <= 90 && gf > 80 && fruit1 != "reverse")
     {
     reverseFruitX = rand() % width;
     reverseFruitY = rand() % height;
     }
-    else if (gf <= 90 && gf > 80 && fruit1 == "reverse") generateFruit();
+    else if (gf <= 90 && gf > 80 && fruit1 == "reverse") generateFruit2();
 
     if (gf <= 100 && gf > 90 && fruit1 != "Minus")
     {
     MinusFruitX = rand() % width;
     MinusFruitY = rand() % height;
     }
-    else if(gf <= 100 && gf > 90 && fruit1 == "Minus") generateFruit();
+    else if(gf <= 100 && gf > 90 && fruit1 == "Minus") generateFruit2();
 
     fruitEat = false ;
     }  
+
 }
 
 void Draw() {  // อันนี้เป็นฟังก์ชั่นที่จะวาดmapของเกมขึ้นมา
@@ -380,6 +381,7 @@ srand(time(0));
     while (!gameOver) {//gameOverเป็นfalseอยู่ก็เล่นต่อไปป
         Draw();//สร้างmapขึ้นใหม่ในทุกๆเฟรม
         generateFruit();
+        generateFruit2();
         Input();//รับinputเพื่อเดินในทุกๆเฟรม
         Logic();//ทำงานตามinputละกะLogicของเกม
         //Sleepคือการกำหนดความเร็วเฟรมยิงเฟรมผ่านไปเร็ว(ก็คือค่าในSleepยิ่งน้อย)งูก็จะดูเหมือนวิ่งไวขึ้นเท่านั้น
